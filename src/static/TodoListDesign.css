@@ -1,0 +1,71 @@
+.Todos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+}
+
+
+.TodoList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.TodoItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.TodoItem p {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.TodoItem button {
+    margin-left: 10px;
+    padding: 5px;
+    border: none;
+    background-color: #f00;
+    color: #fff;
+    cursor: pointer;
+}
+
+.TodoItem button:hover {
+    background-color: #ff0000;
+}
+
+.TodoItemAdd {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.TodoItemAdd input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.TodoItemAdd button {
+    margin-left: 10px;
+    padding: 5px;
+    border: none;
+    background-color: #0f0;
+    color: #fff;
+    cursor: pointer;
+}
