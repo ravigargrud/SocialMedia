@@ -1,19 +1,34 @@
-import { useState } from 'react';
 import './App.css';
-import TodoList from './components/TodoList.jsx';
-import TodoItemAdd from './components/TodoItemAdd.jsx';
+import Navbar from './components/navbar.jsx';
+import Home from './components/home.jsx';
+import SignUp from './components/signup.jsx'; // Ensure this import is correct
+import { useState } from 'react';
 
 function App() {
-  const [items, setItems] = useState(["Chai", "Coffee", "Herbal Tea"]);
-  const [isEmpty, setIsEmpty] = useState(false);
+  const [isUserSignedUp, setIsUserSignedUp] = useState(false);
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    password: '',
+    posts: [{ title: '', content: '' }]
+  });
+
+  const signUpUser = (e) => {
+    e.preventDefault();
+    setIsUserSignedUp(true);
+    const userDetails = {
+      name: e.target.userName.value,
+      email: e.target.userEmail.value,
+      password: e.target.userPassword.value,
+      posts: [{ title: 'SAMPLE', content: 'MY POTENTIAL' }, { title: 'SAMPLE', content: 'MY POTENTIAL' }]
+    }
+    setUser(userDetails);
+  };
 
   return (
     <>
-      <h1>Todo App</h1>
-      <div className='Todos'>
-      {!isEmpty? <TodoList items={items} setItems={setItems} isEmpty={isEmpty} setIsEmpty={setIsEmpty}/> : <h2>No items</h2>}
-      </div>
-      <TodoItemAdd items={items} setItems={setItems} setIsEmpty={setIsEmpty}/>
+      <Navbar />
+      {isUserSignedUp ? <Home user={user} setUser={setUser}/> : <SignUp signUpUser={signUpUser} />}
     </>
   );
 }
