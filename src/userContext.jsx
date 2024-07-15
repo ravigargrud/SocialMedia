@@ -3,7 +3,7 @@ import React, {createContext, useState} from "react";
 export const UserContext = createContext();
 
 export const UserProvider = ({children}) => {
-    
+
     const [isUserSignedUp, setIsUserSignedUp] = useState(false);
     const [user, setUser] = useState({
         name: '',
@@ -19,7 +19,7 @@ export const UserProvider = ({children}) => {
       name: e.target.userName.value,
       email: e.target.userEmail.value,
       password: e.target.userPassword.value,
-      posts: [{ title: 'SAMPLE', content: 'MY POTENTIAL' }, { title: 'SAMPLE', content: 'MY POTENTIAL' }]
+      posts: []
     }
     setUser(userDetails);
   };
@@ -29,8 +29,19 @@ export const UserProvider = ({children}) => {
     setUser({ ...user, posts: newPosts });
 };
 
+const addPost = (e) => {
+    e.preventDefault();
+    const newPost = {
+        title: e.target.postTitle.value,
+        content: e.target.postContent.value
+    };
+    setUser({ ...user, posts: [...user.posts, newPost] });
+    e.target.postTitle.value = '';
+    e.target.postContent.value = '';
+};
+
   return (
-    <UserContext.Provider value={{ user, isUserSignedUp, signUpUser, deletePost }}>
+    <UserContext.Provider value={{ user, isUserSignedUp, signUpUser, deletePost, addPost }}>
         {children}
     </UserContext.Provider>
 );

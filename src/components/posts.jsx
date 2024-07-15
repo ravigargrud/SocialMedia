@@ -7,6 +7,7 @@ const Posts = () => {
 
     return (
         <>
+            {user.posts.length === 0 && <h1>No posts to show</h1>}
             {user.posts.map((post, index) => (
                 <Post key={index} postHead={post.title} postBody={post.content} deletePost={() => deletePost(index)} />
             ))}
