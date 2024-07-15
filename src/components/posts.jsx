@@ -1,16 +1,14 @@
 import Post from './post.jsx';
+import { UserContext } from '../userContext.jsx';
+import { useContext } from 'react';
 
-const Posts = ({ user, setUser }) => {
-    console.log(user);
-    const onClickDeletePost = (index) => {
-        const newPosts = user.posts.filter((post, idx) => idx !== index);
-        setUser({ ...user, posts: newPosts });
-    }
+const Posts = () => {
+    const { user, setUser, deletePost } = useContext(UserContext);
 
     return (
         <>
             {user.posts.map((post, index) => (
-                <Post key={index} postHead={post.title} postBody={post.content} deletePost={() => onClickDeletePost(index)} />
+                <Post key={index} postHead={post.title} postBody={post.content} deletePost={() => deletePost(index)} />
             ))}
         </>
     );

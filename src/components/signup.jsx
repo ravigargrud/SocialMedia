@@ -1,6 +1,9 @@
-import React from 'react';
+import { useContext } from "react";
+import { UserContext } from "../userContext.jsx";
 
-const SignUp = ({ signUpUser }) => {
+const SignUp = () => {
+
+const { signUpUser } = useContext(UserContext);
   return (
     <div>
       <h1>Sign Up</h1>
